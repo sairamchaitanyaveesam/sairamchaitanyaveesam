@@ -1,0 +1,16 @@
+---
+- name: Clone Git Repository
+  hosts: your_target_host
+  tasks:
+    - name: Install Git
+      become: yes
+      package:
+        name: git
+        state: present
+
+    - name: Clone Git Repository
+      git:
+        repo: https://github.com/your_username/your_repository.git
+        dest: /path/to/clone/destination
+        version: master
+      become: yes
